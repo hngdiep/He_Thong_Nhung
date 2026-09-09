@@ -1,0 +1,148 @@
+
+Discarded input sections
+
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .text          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 main.o
+ .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 startup.o
+ .data          0x00000000        0x0 startup.o
+ .bss           0x00000000        0x0 startup.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00010000         xr
+RAM              0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD startup.o
+                0x20005000                        _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08000000      0x130
+                0x08000000                        . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x130 startup.o
+                0x08000130                        . = ALIGN (0x4)
+
+.text           0x08000130      0x100
+                0x08000130                        . = ALIGN (0x4)
+ *(.text)
+ *(.text*)
+ .text.delay    0x08000130       0x22 main.o
+                0x08000130                delay
+ *fill*         0x08000152        0x2 
+ .text.main     0x08000154       0x98 main.o
+                0x08000154                main
+ .text.Reset_Handler
+                0x080001ec       0x40 startup.o
+                0x080001ec                Reset_Handler
+ .text.Default_Handler
+                0x0800022c        0x4 startup.o
+                0x0800022c                Default_Handler
+ *(.rodata)
+ *(.rodata*)
+                0x08000230                        . = ALIGN (0x4)
+                0x08000230                        _etext = .
+                0x08000230                        _sidata = LOADADDR (.data)
+
+.glue_7         0x08000230        0x0
+ .glue_7        0x08000230        0x0 linker stubs
+
+.glue_7t        0x08000230        0x0
+ .glue_7t       0x08000230        0x0 linker stubs
+
+.vfp11_veneer   0x08000230        0x0
+ .vfp11_veneer  0x08000230        0x0 linker stubs
+
+.v4_bx          0x08000230        0x0
+ .v4_bx         0x08000230        0x0 linker stubs
+
+.iplt           0x08000230        0x0
+ .iplt          0x08000230        0x0 main.o
+
+.rel.dyn        0x08000230        0x0
+ .rel.iplt      0x08000230        0x0 main.o
+
+.data           0x20000000        0x0 load address 0x08000230
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sdata = .
+ *(.data)
+ *(.data*)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x08000230
+ .igot.plt      0x20000000        0x0 main.o
+
+.bss            0x20000000        0x0 load address 0x08000230
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sbss = .
+ *(.bss)
+ *(.bss*)
+ *(COMMON)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _ebss = .
+OUTPUT(bai-4.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x1ad
+ .debug_info    0x00000000      0x1ad main.o
+
+.debug_abbrev   0x00000000       0xcf
+ .debug_abbrev  0x00000000       0xcf main.o
+
+.debug_aranges  0x00000000       0x28
+ .debug_aranges
+                0x00000000       0x28 main.o
+
+.debug_rnglists
+                0x00000000       0x1a
+ .debug_rnglists
+                0x00000000       0x1a main.o
+
+.debug_macro    0x00000000     0xfe00
+ .debug_macro   0x00000000       0x73 main.o
+ .debug_macro   0x00000073      0xac6 main.o
+ .debug_macro   0x00000b39       0x2e main.o
+ .debug_macro   0x00000b67       0x22 main.o
+ .debug_macro   0x00000b89      0x34e main.o
+ .debug_macro   0x00000ed7       0x1c main.o
+ .debug_macro   0x00000ef3       0x22 main.o
+ .debug_macro   0x00000f15       0xbd main.o
+ .debug_macro   0x00000fd2      0xd23 main.o
+ .debug_macro   0x00001cf5     0xe09e main.o
+ .debug_macro   0x0000fd93       0x6d main.o
+
+.debug_line     0x00000000      0x1e8
+ .debug_line    0x00000000      0x1e8 main.o
+
+.debug_str      0x00000000    0x54006
+ .debug_str     0x00000000    0x54006 main.o
+                              0x54227 (size before relaxing)
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 main.o
+                                 0x27 (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x2b
+ .ARM.attributes
+                0x00000000       0x2d main.o
+ .ARM.attributes
+                0x0000002d       0x21 startup.o
+
+.debug_frame    0x00000000       0x54
+ .debug_frame   0x00000000       0x54 main.o
