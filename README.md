@@ -1,10 +1,8 @@
-# 📌 HỆ THỐNG NHÚNG (EMBEDDED SYSTEMS)
+# 📌 HỆ THỐNG NHÚNG 
 
-Kho lưu trữ mã nguồn và bài tập môn Hệ thống nhúng.
 
----
 
-##  BÀI TẬP VỀ NHÀ TUẦN 01 (REGISTER-LEVEL)
+##  BÀI TẬP VỀ NHÀ TUẦN 01 
 
 | Nội dung | Video Demo | 
  | :--- | :---: | 
