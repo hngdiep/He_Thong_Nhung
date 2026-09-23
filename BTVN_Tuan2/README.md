@@ -3,8 +3,8 @@
 
 | Nội dung | Video Demo | 
  | :--- | :---: | 
- | Bai1 | [video](https://drive.google.com/file/d/1I8JIcDigUpUOeNg4zzqp_7zaRSSqEQVC/view?usp=sharing) | 
+ | Bai1 | [video](https://drive.google.com/file/d/1_JwYXjTm4fvB6OiXd5PDpI3pEZAFjkE9/view?usp=sharing) | 
  | Bai2 |  [video](https://drive.google.com/file/d/12I5jKcJ1omNR7ZEM361q3-PlJABV4FZS/view?usp=sharing) |
- | Bai3 |[video](https://drive.google.com/file/d/1ViG9ohDWvGrpFG2kPE6NjmhYNFFkDiz-/view?usp=sharing) | 
- | Bai4 | [video](https://drive.google.com/file/d/1vL7Evf0P_Axl_-GEtjrNEvwG51rUgsuJ/view?usp=sharing) | 
- | Bai5 | [video]
+ | Bai3 |[video](https://drive.google.com/file/d/1H2T1YvQAuq9eRbfrb0z521IrtA7agLPN/view?usp=sharing) | 
+ | Bai4 | [video](https://drive.google.com/file/d/1MPVwwin1CwbEyNmwQwa1sRO3lAPvT60r/view?usp=sharing) | 
+ | Bai5 | [video](https://drive.google.com/file/d/1A-oV0W9tY-8JbZ19I4eLLmU-z8E1MO_b/view?usp=sharing).|
