@@ -1,0 +1,187 @@
+
+Discarded input sections
+
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .text          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 main.o
+ .bss           0x00000000        0x0 main.o
+ .group         0x00000000        0xc pwm.o
+ .group         0x00000000        0xc pwm.o
+ .group         0x00000000        0xc pwm.o
+ .group         0x00000000        0xc pwm.o
+ .group         0x00000000        0xc pwm.o
+ .group         0x00000000        0xc pwm.o
+ .group         0x00000000        0xc pwm.o
+ .group         0x00000000        0xc pwm.o
+ .group         0x00000000        0xc pwm.o
+ .group         0x00000000        0xc pwm.o
+ .text          0x00000000        0x0 pwm.o
+ .data          0x00000000        0x0 pwm.o
+ .bss           0x00000000        0x0 pwm.o
+ .debug_macro   0x00000000      0xac6 pwm.o
+ .debug_macro   0x00000000       0x2e pwm.o
+ .debug_macro   0x00000000       0x22 pwm.o
+ .debug_macro   0x00000000      0x34e pwm.o
+ .debug_macro   0x00000000       0x1c pwm.o
+ .debug_macro   0x00000000       0x22 pwm.o
+ .debug_macro   0x00000000       0xbd pwm.o
+ .debug_macro   0x00000000      0xd23 pwm.o
+ .debug_macro   0x00000000     0xe09e pwm.o
+ .debug_macro   0x00000000       0x6d pwm.o
+ .text          0x00000000        0x0 startup.o
+ .data          0x00000000        0x0 startup.o
+ .bss           0x00000000        0x0 startup.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00010000         xr
+RAM              0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD pwm.o
+LOAD startup.o
+                0x20005000                        _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08000000      0x130
+                0x08000000                        . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x130 startup.o
+                0x08000130                        . = ALIGN (0x4)
+
+.text           0x08000130      0x260
+                0x08000130                        . = ALIGN (0x4)
+ *(.text)
+ *(.text*)
+ .text.main     0x08000130        0xc main.o
+                0x08000130                main
+ .text.PWM_TIM2_Init
+                0x0800013c      0x210 pwm.o
+                0x0800013c                PWM_TIM2_Init
+ .text.Reset_Handler
+                0x0800034c       0x40 startup.o
+                0x0800034c                Reset_Handler
+ .text.Default_Handler
+                0x0800038c        0x4 startup.o
+                0x0800038c                Default_Handler
+ *(.rodata)
+ *(.rodata*)
+                0x08000390                        . = ALIGN (0x4)
+                0x08000390                        _etext = .
+                0x08000390                        _sidata = LOADADDR (.data)
+
+.glue_7         0x08000390        0x0
+ .glue_7        0x08000390        0x0 linker stubs
+
+.glue_7t        0x08000390        0x0
+ .glue_7t       0x08000390        0x0 linker stubs
+
+.vfp11_veneer   0x08000390        0x0
+ .vfp11_veneer  0x08000390        0x0 linker stubs
+
+.v4_bx          0x08000390        0x0
+ .v4_bx         0x08000390        0x0 linker stubs
+
+.iplt           0x08000390        0x0
+ .iplt          0x08000390        0x0 main.o
+
+.rel.dyn        0x08000390        0x0
+ .rel.iplt      0x08000390        0x0 main.o
+
+.data           0x20000000        0x0 load address 0x08000390
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sdata = .
+ *(.data)
+ *(.data*)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x08000390
+ .igot.plt      0x20000000        0x0 main.o
+
+.bss            0x20000000        0x0 load address 0x08000390
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sbss = .
+ *(.bss)
+ *(.bss*)
+ *(COMMON)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _ebss = .
+OUTPUT(bai4_tuan2.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x3a6
+ .debug_info    0x00000000       0x8f main.o
+ .debug_info    0x0000008f      0x317 pwm.o
+
+.debug_abbrev   0x00000000      0x10d
+ .debug_abbrev  0x00000000       0x5a main.o
+ .debug_abbrev  0x0000005a       0xb3 pwm.o
+
+.debug_aranges  0x00000000       0x40
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 pwm.o
+
+.debug_rnglists
+                0x00000000       0x27
+ .debug_rnglists
+                0x00000000       0x13 main.o
+ .debug_rnglists
+                0x00000013       0x14 pwm.o
+
+.debug_macro    0x00000000     0xfe87
+ .debug_macro   0x00000000       0x7d main.o
+ .debug_macro   0x0000007d      0xac6 main.o
+ .debug_macro   0x00000b43       0x2e main.o
+ .debug_macro   0x00000b71       0x22 main.o
+ .debug_macro   0x00000b93      0x34e main.o
+ .debug_macro   0x00000ee1       0x1c main.o
+ .debug_macro   0x00000efd       0x22 main.o
+ .debug_macro   0x00000f1f       0xbd main.o
+ .debug_macro   0x00000fdc      0xd23 main.o
+ .debug_macro   0x00001cff     0xe09e main.o
+ .debug_macro   0x0000fd9d       0x6d main.o
+ .debug_macro   0x0000fe0a       0x7d pwm.o
+
+.debug_line     0x00000000      0x3d4
+ .debug_line    0x00000000      0x17b main.o
+ .debug_line    0x0000017b      0x259 pwm.o
+
+.debug_str      0x00000000    0x5408d
+ .debug_str     0x00000000    0x5408d main.o
+                              0x541d6 (size before relaxing)
+ .debug_str     0x0005408d        0x0 pwm.o
+                              0x542a2 (size before relaxing)
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 main.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026        0x0 pwm.o
+                                 0x27 (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x2b
+ .ARM.attributes
+                0x00000000       0x2d main.o
+ .ARM.attributes
+                0x0000002d       0x2d pwm.o
+ .ARM.attributes
+                0x0000005a       0x21 startup.o
+
+.debug_frame    0x00000000       0x5c
+ .debug_frame   0x00000000       0x2c main.o
+ .debug_frame   0x0000002c       0x30 pwm.o

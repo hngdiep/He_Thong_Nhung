@@ -1,0 +1,288 @@
+
+Discarded input sections
+
+ .group         0x00000000        0xc adc.o
+ .group         0x00000000        0xc adc.o
+ .group         0x00000000        0xc adc.o
+ .group         0x00000000        0xc adc.o
+ .group         0x00000000        0xc adc.o
+ .group         0x00000000        0xc adc.o
+ .group         0x00000000        0xc adc.o
+ .group         0x00000000        0xc adc.o
+ .group         0x00000000        0xc adc.o
+ .group         0x00000000        0xc adc.o
+ .text          0x00000000        0x0 adc.o
+ .data          0x00000000        0x0 adc.o
+ .bss           0x00000000        0x0 adc.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .text          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 main.o
+ .bss           0x00000000        0x0 main.o
+ .debug_macro   0x00000000      0xac6 main.o
+ .debug_macro   0x00000000       0x2e main.o
+ .debug_macro   0x00000000       0x22 main.o
+ .debug_macro   0x00000000      0x34e main.o
+ .debug_macro   0x00000000       0x1c main.o
+ .debug_macro   0x00000000       0x22 main.o
+ .debug_macro   0x00000000       0xbd main.o
+ .debug_macro   0x00000000      0xd23 main.o
+ .debug_macro   0x00000000     0xe09e main.o
+ .debug_macro   0x00000000       0x6d main.o
+ .group         0x00000000        0xc systick.o
+ .group         0x00000000        0xc systick.o
+ .group         0x00000000        0xc systick.o
+ .group         0x00000000        0xc systick.o
+ .group         0x00000000        0xc systick.o
+ .group         0x00000000        0xc systick.o
+ .group         0x00000000        0xc systick.o
+ .group         0x00000000        0xc systick.o
+ .group         0x00000000        0xc systick.o
+ .group         0x00000000        0xc systick.o
+ .text          0x00000000        0x0 systick.o
+ .data          0x00000000        0x0 systick.o
+ .bss           0x00000000        0x0 systick.o
+ .debug_macro   0x00000000      0xac6 systick.o
+ .debug_macro   0x00000000       0x2e systick.o
+ .debug_macro   0x00000000       0x22 systick.o
+ .debug_macro   0x00000000      0x34e systick.o
+ .debug_macro   0x00000000       0x1c systick.o
+ .debug_macro   0x00000000       0x22 systick.o
+ .debug_macro   0x00000000       0xbd systick.o
+ .debug_macro   0x00000000      0xd23 systick.o
+ .debug_macro   0x00000000     0xe09e systick.o
+ .debug_macro   0x00000000       0x6d systick.o
+ .group         0x00000000        0xc uart.o
+ .group         0x00000000        0xc uart.o
+ .group         0x00000000        0xc uart.o
+ .group         0x00000000        0xc uart.o
+ .group         0x00000000        0xc uart.o
+ .group         0x00000000        0xc uart.o
+ .group         0x00000000        0xc uart.o
+ .group         0x00000000        0xc uart.o
+ .group         0x00000000        0xc uart.o
+ .group         0x00000000        0xc uart.o
+ .text          0x00000000        0x0 uart.o
+ .data          0x00000000        0x0 uart.o
+ .bss           0x00000000        0x0 uart.o
+ .debug_macro   0x00000000      0xac6 uart.o
+ .debug_macro   0x00000000       0x2e uart.o
+ .debug_macro   0x00000000       0x22 uart.o
+ .debug_macro   0x00000000      0x34e uart.o
+ .debug_macro   0x00000000       0x1c uart.o
+ .debug_macro   0x00000000       0x22 uart.o
+ .debug_macro   0x00000000       0xbd uart.o
+ .debug_macro   0x00000000      0xd23 uart.o
+ .debug_macro   0x00000000     0xe09e uart.o
+ .debug_macro   0x00000000       0x6d uart.o
+ .text          0x00000000        0x0 startup.o
+ .data          0x00000000        0x0 startup.o
+ .bss           0x00000000        0x0 startup.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00010000         xr
+RAM              0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD adc.o
+LOAD main.o
+LOAD systick.o
+LOAD uart.o
+LOAD startup.o
+                0x20005000                        _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08000000      0x130
+                0x08000000                        . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x130 startup.o
+                0x08000130                        . = ALIGN (0x4)
+
+.text           0x08000130      0x478
+                0x08000130                        . = ALIGN (0x4)
+ *(.text)
+ *(.text*)
+ .text.ADC1_Init
+                0x08000130       0xec adc.o
+                0x08000130                ADC1_Init
+ .text.ADC1_Read
+                0x0800021c       0x60 adc.o
+                0x0800021c                ADC1_Read
+ .text.Clock_HSI8_Init
+                0x0800027c       0x74 main.o
+                0x0800027c                Clock_HSI8_Init
+ .text.main     0x080002f0       0x84 main.o
+                0x080002f0                main
+ .text.SysTick_Init
+                0x08000374       0x28 systick.o
+                0x08000374                SysTick_Init
+ .text.UART1_Init
+                0x0800039c       0xb8 uart.o
+                0x0800039c                UART1_Init
+ .text.UART1_SendChar
+                0x08000454       0x2c uart.o
+                0x08000454                UART1_SendChar
+ .text.UART1_SendString
+                0x08000480       0x2c uart.o
+                0x08000480                UART1_SendString
+ .text.UART1_SendNumber
+                0x080004ac       0x80 uart.o
+                0x080004ac                UART1_SendNumber
+ .text.Reset_Handler
+                0x0800052c       0x40 startup.o
+                0x0800052c                Reset_Handler
+ .text.Default_Handler
+                0x0800056c        0x4 startup.o
+                0x0800056c                Default_Handler
+ *(.rodata)
+ .rodata        0x08000570       0x36 main.o
+ *(.rodata*)
+                0x080005a8                        . = ALIGN (0x4)
+ *fill*         0x080005a6        0x2 
+                0x080005a8                        _etext = .
+                0x080005a8                        _sidata = LOADADDR (.data)
+
+.glue_7         0x080005a8        0x0
+ .glue_7        0x080005a8        0x0 linker stubs
+
+.glue_7t        0x080005a8        0x0
+ .glue_7t       0x080005a8        0x0 linker stubs
+
+.vfp11_veneer   0x080005a8        0x0
+ .vfp11_veneer  0x080005a8        0x0 linker stubs
+
+.v4_bx          0x080005a8        0x0
+ .v4_bx         0x080005a8        0x0 linker stubs
+
+.iplt           0x080005a8        0x0
+ .iplt          0x080005a8        0x0 main.o
+
+.rel.dyn        0x080005a8        0x0
+ .rel.iplt      0x080005a8        0x0 main.o
+
+.data           0x20000000        0x0 load address 0x080005a8
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sdata = .
+ *(.data)
+ *(.data*)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x080005a8
+ .igot.plt      0x20000000        0x0 main.o
+
+.bss            0x20000000        0x0 load address 0x080005a8
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sbss = .
+ *(.bss)
+ *(.bss*)
+ *(COMMON)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _ebss = .
+OUTPUT(bai3_tuan2.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x8c9
+ .debug_info    0x00000000      0x2bb adc.o
+ .debug_info    0x000002bb      0x218 main.o
+ .debug_info    0x000004d3       0xe3 systick.o
+ .debug_info    0x000005b6      0x313 uart.o
+
+.debug_abbrev   0x00000000      0x423
+ .debug_abbrev  0x00000000      0x117 adc.o
+ .debug_abbrev  0x00000117      0x126 main.o
+ .debug_abbrev  0x0000023d       0xa4 systick.o
+ .debug_abbrev  0x000002e1      0x142 uart.o
+
+.debug_aranges  0x00000000       0xa8
+ .debug_aranges
+                0x00000000       0x28 adc.o
+ .debug_aranges
+                0x00000028       0x28 main.o
+ .debug_aranges
+                0x00000050       0x20 systick.o
+ .debug_aranges
+                0x00000070       0x38 uart.o
+
+.debug_rnglists
+                0x00000000       0x6e
+ .debug_rnglists
+                0x00000000       0x1a adc.o
+ .debug_rnglists
+                0x0000001a       0x1a main.o
+ .debug_rnglists
+                0x00000034       0x13 systick.o
+ .debug_rnglists
+                0x00000047       0x27 uart.o
+
+.debug_macro    0x00000000     0xff95
+ .debug_macro   0x00000000       0x7d adc.o
+ .debug_macro   0x0000007d      0xac6 adc.o
+ .debug_macro   0x00000b43       0x2e adc.o
+ .debug_macro   0x00000b71       0x22 adc.o
+ .debug_macro   0x00000b93      0x34e adc.o
+ .debug_macro   0x00000ee1       0x1c adc.o
+ .debug_macro   0x00000efd       0x22 adc.o
+ .debug_macro   0x00000f1f       0xbd adc.o
+ .debug_macro   0x00000fdc      0xd23 adc.o
+ .debug_macro   0x00001cff     0xe09e adc.o
+ .debug_macro   0x0000fd9d       0x6d adc.o
+ .debug_macro   0x0000fe0a       0x91 main.o
+ .debug_macro   0x0000fe9b       0x7d systick.o
+ .debug_macro   0x0000ff18       0x7d uart.o
+
+.debug_line     0x00000000      0x87e
+ .debug_line    0x00000000      0x25d adc.o
+ .debug_line    0x0000025d      0x21c main.o
+ .debug_line    0x00000479      0x191 systick.o
+ .debug_line    0x0000060a      0x274 uart.o
+
+.debug_str      0x00000000    0x5418f
+ .debug_str     0x00000000    0x5418f adc.o
+                              0x5429e (size before relaxing)
+ .debug_str     0x0005418f        0x0 main.o
+                              0x542c1 (size before relaxing)
+ .debug_str     0x0005418f        0x0 systick.o
+                              0x541fd (size before relaxing)
+ .debug_str     0x0005418f        0x0 uart.o
+                              0x542bb (size before relaxing)
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 adc.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026        0x0 main.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026        0x0 systick.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026        0x0 uart.o
+                                 0x27 (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x2b
+ .ARM.attributes
+                0x00000000       0x2d adc.o
+ .ARM.attributes
+                0x0000002d       0x2d main.o
+ .ARM.attributes
+                0x0000005a       0x2d systick.o
+ .ARM.attributes
+                0x00000087       0x2d uart.o
+ .ARM.attributes
+                0x000000b4       0x21 startup.o
+
+.debug_frame    0x00000000      0x180
+ .debug_frame   0x00000000       0x60 adc.o
+ .debug_frame   0x00000060       0x50 main.o
+ .debug_frame   0x000000b0       0x30 systick.o
+ .debug_frame   0x000000e0       0xa0 uart.o
