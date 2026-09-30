@@ -1,0 +1,303 @@
+
+Discarded input sections
+
+ .group         0x00000000        0xc button.o
+ .group         0x00000000        0xc button.o
+ .group         0x00000000        0xc button.o
+ .group         0x00000000        0xc button.o
+ .group         0x00000000        0xc button.o
+ .group         0x00000000        0xc button.o
+ .group         0x00000000        0xc button.o
+ .group         0x00000000        0xc button.o
+ .group         0x00000000        0xc button.o
+ .group         0x00000000        0xc button.o
+ .text          0x00000000        0x0 button.o
+ .data          0x00000000        0x0 button.o
+ .bss           0x00000000        0x0 button.o
+ .group         0x00000000        0xc delay.o
+ .group         0x00000000        0xc delay.o
+ .group         0x00000000        0xc delay.o
+ .group         0x00000000        0xc delay.o
+ .group         0x00000000        0xc delay.o
+ .group         0x00000000        0xc delay.o
+ .group         0x00000000        0xc delay.o
+ .group         0x00000000        0xc delay.o
+ .group         0x00000000        0xc delay.o
+ .group         0x00000000        0xc delay.o
+ .text          0x00000000        0x0 delay.o
+ .data          0x00000000        0x0 delay.o
+ .bss           0x00000000        0x0 delay.o
+ .debug_macro   0x00000000      0xac6 delay.o
+ .debug_macro   0x00000000       0x2e delay.o
+ .debug_macro   0x00000000       0x22 delay.o
+ .debug_macro   0x00000000      0x34e delay.o
+ .debug_macro   0x00000000       0x1c delay.o
+ .debug_macro   0x00000000       0x22 delay.o
+ .debug_macro   0x00000000       0xbd delay.o
+ .debug_macro   0x00000000      0xd23 delay.o
+ .debug_macro   0x00000000     0xe09e delay.o
+ .debug_macro   0x00000000       0x6d delay.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .group         0x00000000        0xc main.o
+ .text          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 main.o
+ .bss           0x00000000        0x0 main.o
+ .debug_macro   0x00000000      0xac6 main.o
+ .debug_macro   0x00000000       0x2e main.o
+ .debug_macro   0x00000000       0x22 main.o
+ .debug_macro   0x00000000      0x34e main.o
+ .debug_macro   0x00000000       0x1c main.o
+ .debug_macro   0x00000000       0x22 main.o
+ .debug_macro   0x00000000       0xbd main.o
+ .debug_macro   0x00000000      0xd23 main.o
+ .debug_macro   0x00000000     0xe09e main.o
+ .debug_macro   0x00000000       0x6d main.o
+ .group         0x00000000        0xc uart_dma.o
+ .group         0x00000000        0xc uart_dma.o
+ .group         0x00000000        0xc uart_dma.o
+ .group         0x00000000        0xc uart_dma.o
+ .group         0x00000000        0xc uart_dma.o
+ .group         0x00000000        0xc uart_dma.o
+ .group         0x00000000        0xc uart_dma.o
+ .group         0x00000000        0xc uart_dma.o
+ .group         0x00000000        0xc uart_dma.o
+ .group         0x00000000        0xc uart_dma.o
+ .text          0x00000000        0x0 uart_dma.o
+ .data          0x00000000        0x0 uart_dma.o
+ .bss           0x00000000        0x0 uart_dma.o
+ .text.UART1_DMA_IsBusy
+                0x00000000       0x18 uart_dma.o
+ .debug_macro   0x00000000      0xac6 uart_dma.o
+ .debug_macro   0x00000000       0x2e uart_dma.o
+ .debug_macro   0x00000000       0x22 uart_dma.o
+ .debug_macro   0x00000000      0x34e uart_dma.o
+ .debug_macro   0x00000000       0x1c uart_dma.o
+ .debug_macro   0x00000000       0x22 uart_dma.o
+ .debug_macro   0x00000000       0xbd uart_dma.o
+ .debug_macro   0x00000000      0xd23 uart_dma.o
+ .debug_macro   0x00000000     0xe09e uart_dma.o
+ .debug_macro   0x00000000       0x6d uart_dma.o
+ .text          0x00000000        0x0 startup.o
+ .data          0x00000000        0x0 startup.o
+ .bss           0x00000000        0x0 startup.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00010000         xr
+RAM              0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD button.o
+LOAD delay.o
+LOAD main.o
+LOAD uart_dma.o
+LOAD startup.o
+                0x20005000                        _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08000000      0x130
+                0x08000000                        . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x130 startup.o
+                0x08000130                        . = ALIGN (0x4)
+
+.text           0x08000130      0x4c4
+                0x08000130                        . = ALIGN (0x4)
+ *(.text)
+ *(.text*)
+ .text.Button_Init
+                0x08000130       0x44 button.o
+                0x08000130                Button_Init
+ .text.Button_IsPressed
+                0x08000174       0x24 button.o
+                0x08000174                Button_IsPressed
+ .text.Delay_ms
+                0x08000198       0x36 delay.o
+                0x08000198                Delay_ms
+ .text.Add_String
+                0x080001ce       0x3c main.o
+ *fill*         0x0800020a        0x2 
+ .text.Add_Number
+                0x0800020c       0xa0 main.o
+ .text.Create_Message
+                0x080002ac       0x5c main.o
+ .text.main     0x08000308       0xb4 main.o
+                0x08000308                main
+ .text.UART1_DMA_Init
+                0x080003bc      0x104 uart_dma.o
+                0x080003bc                UART1_DMA_Init
+ .text.UART1_DMA_Service
+                0x080004c0       0x64 uart_dma.o
+                0x080004c0                UART1_DMA_Service
+ .text.UART1_DMA_Send
+                0x08000524       0x74 uart_dma.o
+                0x08000524                UART1_DMA_Send
+ .text.Reset_Handler
+                0x08000598       0x40 startup.o
+                0x08000598                Reset_Handler
+ .text.Default_Handler
+                0x080005d8        0x4 startup.o
+                0x080005d8                Default_Handler
+ *(.rodata)
+ .rodata        0x080005dc       0x18 main.o
+ *(.rodata*)
+                0x080005f4                        . = ALIGN (0x4)
+                0x080005f4                        _etext = .
+                0x080005f4                        _sidata = LOADADDR (.data)
+
+.glue_7         0x080005f4        0x0
+ .glue_7        0x080005f4        0x0 linker stubs
+
+.glue_7t        0x080005f4        0x0
+ .glue_7t       0x080005f4        0x0 linker stubs
+
+.vfp11_veneer   0x080005f4        0x0
+ .vfp11_veneer  0x080005f4        0x0 linker stubs
+
+.v4_bx          0x080005f4        0x0
+ .v4_bx         0x080005f4        0x0 linker stubs
+
+.iplt           0x080005f4        0x0
+ .iplt          0x080005f4        0x0 main.o
+
+.rel.dyn        0x080005f4        0x0
+ .rel.iplt      0x080005f4        0x0 main.o
+
+.data           0x20000000        0x0 load address 0x080005f4
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sdata = .
+ *(.data)
+ *(.data*)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x080005f4
+ .igot.plt      0x20000000        0x0 main.o
+
+.bss            0x20000000       0x4c load address 0x080005f4
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sbss = .
+ *(.bss)
+ *(.bss*)
+ .bss.button_value
+                0x20000000        0x4 main.o
+ .bss.tx_buffer
+                0x20000004       0x40 main.o
+ .bss.button_locked
+                0x20000044        0x1 main.o
+ .bss.message_pending
+                0x20000045        0x1 main.o
+ .bss.pending_length
+                0x20000046        0x2 main.o
+ .bss.uart_dma_busy
+                0x20000048        0x1 uart_dma.o
+ *(COMMON)
+                0x2000004c                        . = ALIGN (0x4)
+ *fill*         0x20000049        0x3 
+                0x2000004c                        _ebss = .
+OUTPUT(bai3.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x7b1
+ .debug_info    0x00000000      0x1a7 button.o
+ .debug_info    0x000001a7       0xb0 delay.o
+ .debug_info    0x00000257      0x267 main.o
+ .debug_info    0x000004be      0x2f3 uart_dma.o
+
+.debug_abbrev   0x00000000      0x3ab
+ .debug_abbrev  0x00000000       0xbf button.o
+ .debug_abbrev  0x000000bf       0x7d delay.o
+ .debug_abbrev  0x0000013c      0x155 main.o
+ .debug_abbrev  0x00000291      0x11a uart_dma.o
+
+.debug_aranges  0x00000000       0xb8
+ .debug_aranges
+                0x00000000       0x28 button.o
+ .debug_aranges
+                0x00000028       0x20 delay.o
+ .debug_aranges
+                0x00000048       0x38 main.o
+ .debug_aranges
+                0x00000080       0x38 uart_dma.o
+
+.debug_rnglists
+                0x00000000       0x79
+ .debug_rnglists
+                0x00000000       0x19 button.o
+ .debug_rnglists
+                0x00000019       0x13 delay.o
+ .debug_rnglists
+                0x0000002c       0x27 main.o
+ .debug_rnglists
+                0x00000053       0x26 uart_dma.o
+
+.debug_macro    0x00000000     0xff95
+ .debug_macro   0x00000000       0x7d button.o
+ .debug_macro   0x0000007d      0xac6 button.o
+ .debug_macro   0x00000b43       0x2e button.o
+ .debug_macro   0x00000b71       0x22 button.o
+ .debug_macro   0x00000b93      0x34e button.o
+ .debug_macro   0x00000ee1       0x1c button.o
+ .debug_macro   0x00000efd       0x22 button.o
+ .debug_macro   0x00000f1f       0xbd button.o
+ .debug_macro   0x00000fdc      0xd23 button.o
+ .debug_macro   0x00001cff     0xe09e button.o
+ .debug_macro   0x0000fd9d       0x6d button.o
+ .debug_macro   0x0000fe0a       0x7d delay.o
+ .debug_macro   0x0000fe87       0x91 main.o
+ .debug_macro   0x0000ff18       0x7d uart_dma.o
+
+.debug_line     0x00000000      0x8bf
+ .debug_line    0x00000000      0x1ba button.o
+ .debug_line    0x000001ba      0x19b delay.o
+ .debug_line    0x00000355      0x2b9 main.o
+ .debug_line    0x0000060e      0x2b1 uart_dma.o
+
+.debug_str      0x00000000    0x54188
+ .debug_str     0x00000000    0x54188 button.o
+                              0x54248 (size before relaxing)
+ .debug_str     0x00054188        0x0 delay.o
+                              0x541d4 (size before relaxing)
+ .debug_str     0x00054188        0x0 main.o
+                              0x542dd (size before relaxing)
+ .debug_str     0x00054188        0x0 uart_dma.o
+                              0x542d9 (size before relaxing)
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 button.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026        0x0 delay.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026        0x0 main.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026        0x0 uart_dma.o
+                                 0x27 (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x2b
+ .ARM.attributes
+                0x00000000       0x2d button.o
+ .ARM.attributes
+                0x0000002d       0x2d delay.o
+ .ARM.attributes
+                0x0000005a       0x2d main.o
+ .ARM.attributes
+                0x00000087       0x2d uart_dma.o
+ .ARM.attributes
+                0x000000b4       0x21 startup.o
+
+.debug_frame    0x00000000      0x1c0
+ .debug_frame   0x00000000       0x50 button.o
+ .debug_frame   0x00000050       0x38 delay.o
+ .debug_frame   0x00000088       0xa0 main.o
+ .debug_frame   0x00000128       0x98 uart_dma.o
