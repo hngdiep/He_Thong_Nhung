@@ -19,3 +19,12 @@
  | Bai3 |[video](https://drive.google.com/file/d/1H2T1YvQAuq9eRbfrb0z521IrtA7agLPN/view?usp=sharing) | 
  | Bai4 | [video](https://drive.google.com/file/d/1MPVwwin1CwbEyNmwQwa1sRO3lAPvT60r/view?usp=sharing) | 
  | Bai5 | [video](https://drive.google.com/file/d/1A-oV0W9tY-8JbZ19I4eLLmU-z8E1MO_b/view?usp=sharing).|
+
+## BÀI TẬP VỀ NHÀ TUẦN 03
+
+| Nội dung | Video Demo | 
+ | :--- | :---: | 
+ | Bai1 | [video](https://drive.google.com/file/d/1Sj3qUBQPKxRh3uAJpk_qVJ5LgHSdM2Zv/view?usp=sharing) | 
+ | Bai2 |  [video](https://drive.google.com/file/d/1EzGD7Cg9k-bKpcyTypWizG2fsNCF3ieo/view?usp=sharing) |
+ | Bai3 |[video](https://drive.google.com/file/d/15iZmE18YsEsWcRE6for-Oz2xuqB_ev65/view?usp=sharing) | 
+ | Bai4 | [video](https://drive.google.com/file/d/1AVMqp5N8A8QtDoZqmnGUSB7l1BA0nx_4/view?usp=sharing) | 
